@@ -1,0 +1,54 @@
+// Other Partials Files
+@use './variables' as *;
+
+
+// Flexbox Mixins
+@mixin flexBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin alignCenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+}
+
+@mixin flexColumnReverse {
+  display: flex;
+  flex-direction: column-reverse;
+  // align-items: center;
+}
+
+
+
+// Media Queries Mixins
+// 1200px, 992px, 768px
+$breakpoints-up: ("large": "80rem", "medium": "66.13rem", "small": "51.2rem", "x-small": "33.3rem");
+
+// 1024px, 991px, 767px
+$breakpoints-down: ("large": "68.25rem", "medium": "66.13rem", "small": "51.13rem", "x-small": "26.7rem");
+
+@mixin breakpoint-up($size){
+  @media (min-width: map-get($breakpoints-up, $size)){
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size){
+  @media (max-width: map-get($breakpoints-down, $size)){
+    @content;
+  }
+}

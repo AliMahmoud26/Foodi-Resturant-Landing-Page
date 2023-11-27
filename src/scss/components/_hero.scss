@@ -1,0 +1,289 @@
+// Importing Partials Files
+@use '../partials/variables' as *;
+@use '../partials/mixins' as *;
+
+// Styling The Hero Component
+.hero {
+    padding: 0 $padding;
+    .container {
+        @include flexBetween;
+
+        @include breakpoint-down(medium) {
+            @include flexColumnReverse;
+        }
+
+        .left-hero {
+
+            @include breakpoint-down(medium) {
+                margin-top: 6rem;
+            }
+
+            @include breakpoint-down(x-small) {
+                margin-top: 10rem;
+            }
+
+            h1 {
+                font: {
+                    size: 3rem;
+                    weight: 800;
+                }
+                line-height: 1.5;
+
+                > span {
+                    color: $green;
+                }
+
+                @include breakpoint-down(small) {
+                    font-size: 2.25rem;
+                }
+
+                @include breakpoint-down(x-small) {
+                    font-size: 1.5rem;
+                }
+            }
+
+            p {
+                margin: 2rem 0 3rem;
+                color: $textColor;
+                font-size: 1.125rem;
+                line-height: 1.7;
+
+                @include breakpoint-down(small) {
+                    font-size: 1rem;
+                }
+
+                @include breakpoint-down(x-small) {
+                    font-size: .875rem;
+                }
+            }
+
+            .btns {
+                @include alignCenter;
+                gap: 1rem;
+
+                @include breakpoint-down(x-small) {
+                    gap: .5rem;
+                }
+
+                .btn {
+                    font-size: 1.125rem;
+                    &:first-of-type {
+                        padding: 1rem 2rem;
+                        font-weight: 400;
+
+                        @include breakpoint-down(small) {
+                            padding: 1.5rem;
+                        }
+
+                        @include breakpoint-down(x-small) {
+                            padding: .75rem;
+                        }
+                    }
+
+                    @include breakpoint-down(small) {
+                        font-size: .875rem;
+                    }
+                }
+
+                .transparent {
+                    @include alignCenter;
+                    gap: 1rem;
+                    background-color: transparent;
+                    box-shadow: none;
+                    color: $textColor;
+                    border: none;
+                    outline: none;
+                    transition: $transition;
+
+                    &:hover {
+                        color: $green;
+                    }
+
+                    @include breakpoint-down(small) {
+                        gap: .5rem;
+                    }
+
+                    .icon {
+                        background-color: $light;
+                        padding: .75rem;
+                        border-radius: 50%;
+                        color: $playButtonColor;
+                        box-shadow: 5px 5px 34px 0 rgb(0 0 0 / 40%);
+
+                        @include breakpoint-down(small) {
+                            padding: .5rem;
+                            font-size: .75rem;
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        .right-hero {
+            position: relative;
+
+            .alt-text {
+                position: absolute;
+                top: 8rem;
+                left: -4rem;
+                background-color: $light;
+                box-shadow: $boxShadow2;
+                padding: .75rem 2rem;
+                border-radius: 4rem;
+
+                @include breakpoint-down(small) {
+                    top: 5rem;
+                    left: -5rem;
+                }
+
+                @include breakpoint-down(x-small) {
+                    top: 3rem;
+                    left: -2rem;
+                    padding: .5rem
+                }
+
+                > span {
+                    @include alignCenter;
+                    gap: .25rem;
+                    color: $pinkColor;
+                    font-weight: 500;
+                    position: relative;
+                    z-index: 99;
+
+                    @include breakpoint-down(x-small) {
+                        font-size: .75rem;
+                    }
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 1rem;
+                        right: -2.80rem;
+                        width: 0;
+                        height: 0;
+                        border-color: $light transparent transparent transparent;
+                        border-width: 17px;
+                        border-style: solid;
+                        transform: rotate(-35deg);
+
+                        @include breakpoint-down(x-small) {
+                            top: 1rem;
+                            right: -.9rem;
+                            border-width: 10px;
+                        }
+                    }
+                }
+            }
+
+            .hero-image {
+                width: 550px;
+                position: relative;
+
+                @include breakpoint-down(small) {
+                    width: 400px;
+                }
+
+                @include breakpoint-down(x-small) {
+                    width: 300px;
+                }
+                
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 1rem;
+                    left: 1rem;
+                    width: 100%;
+                    height: 80%;
+                    background-color: $green;
+                    border-radius: 50%;
+                    z-index: -1;
+                }
+
+                img {
+                    width: 100%;
+                    // z-index: 99;
+                }
+            }
+
+            .mask-group {
+                display: flex;
+                gap: 2.5rem;
+                position: absolute;
+                bottom: -3rem;
+                left: 0;
+
+                @include breakpoint-down(small) {
+                    // @include flexColumn;
+                    gap: 1rem;
+                    // bottom: -10rem;
+                    // left: 5rem;
+                }
+
+                @include breakpoint-down(x-small) {
+                    display: flex;
+                    flex-direction: column;
+                    gap: .5rem;
+                    bottom: -8rem;
+                    left: 4rem;
+                }
+
+                .item {
+                    @include alignCenter;
+                    gap: 1rem;
+                    background-color: $light;
+                    box-shadow: $boxShadow2;
+                    padding: .75rem 1.5rem;
+                    border-radius: 1rem;
+                    transition: $transition;
+
+                    &:hover {
+                        transform: translateY(-10px);
+                    }
+
+                    @include breakpoint-down(small) {
+                        padding: .5rem;
+                    }
+
+                    img {
+                        width: 70px;
+
+                        @include breakpoint-down(small) {
+                            width: 50px;
+                        }
+                    }
+
+                    .item-info {
+                        h3 {
+                            margin-bottom: .25rem;
+                            font-weight: normal;
+
+                            @include breakpoint-down(small) {
+                                font-size: .875rem;
+                            }
+                        }
+
+                        .threeStars,
+                        .fourStars {
+                            color: $yellow;
+                        }
+
+                        .price {
+                            margin-top: .4rem;
+
+                            span {
+                                @include alignCenter;
+                                font-weight: 500;
+
+                                .icon {
+                                    font-size: .875rem;
+                                    color: $pinkColor;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

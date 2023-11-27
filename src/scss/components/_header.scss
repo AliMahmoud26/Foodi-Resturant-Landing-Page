@@ -1,0 +1,164 @@
+// Importing Partials Files
+@use '../partials/variables' as *;
+@use '../partials/mixins' as *;
+
+// Styling The Header Component
+header {
+    padding: 1rem 8rem;
+
+    @include breakpoint-down(small) {
+        padding: 0 2rem;
+    }
+
+    @include breakpoint-down(x-small) {
+        padding: 0 1rem;
+    }
+
+    .container {
+        @include flexBetween;
+
+        // @include breakpoint-down(small) {
+        //     @include;
+        // }
+
+        // Styling the logo component
+        .logo { 
+            > a {
+                @include alignCenter;
+                gap: .15rem;
+                width: 4rem;
+                height: 1rem;
+
+                @include breakpoint-down(x-small) {
+                    width: 2.5rem;
+                    height: .75rem;
+                }
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+
+                    &:first-of-type {
+                        background-color: $green;
+                        padding: .4rem .25rem;
+                        border-radius: .3rem;
+                        height: 2rem;
+                    }
+                }
+            }
+        }
+
+        // Styling the navbar component
+        nav {
+
+            .menu {
+                display: flex;
+                gap: 3rem;
+                position: relative;
+
+                .timesIcon {
+                    display: none;
+                    color: $light;
+                    transition: $transition;
+
+                    &:hover {
+                        color: $green;
+                    }
+
+                    @include breakpoint-down(small) {
+                        display: flex;
+                        align-self: flex-end;
+                    }
+                }
+
+                @include breakpoint-down(small) {
+                    // display: none;
+                    position: absolute;
+                    top: 0;
+                    right: -100%;
+                    flex-direction: column;
+                    text-align: center;
+                    background-color: $lightDark;
+                    padding: 4rem;
+                    min-width: 100vw;
+                    min-height: 100vh;
+                    transition: $transition;
+                    z-index: 999;
+                }
+
+                &.show {
+                    right: 0;
+                }
+
+                li {
+
+                    a {
+                        color: $navbarColor;
+                        transition: $transition;
+                        font-weight: 500;
+
+                        &:hover {
+                            color: $green;
+                        }
+
+                        @include breakpoint-down(small) {
+                            color: $light;
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Styling the contact component
+        .contact {
+            @include alignCenter;
+            gap: 2.5rem;
+
+            @include breakpoint-down(x-small) {
+                gap: 1.5rem;
+            }
+
+            .icon {
+                transition: $transition;
+                cursor: pointer;
+
+                &:hover {
+                    color: $green;
+                }
+
+                @include breakpoint-down(x-small) {
+                    font-size: .5rem;
+                }
+            }
+
+            .btn {
+                @include alignCenter;
+                gap: .25rem;
+                transition: $transition;
+
+                &:hover {
+                    opacity: .9;
+                }
+
+                @include breakpoint-down(x-small) {
+                    font-size: .875rem;
+                    padding: .5rem;
+                }
+            }
+        }
+
+        // Styling the bars icon
+        .barsIcon {
+            display: none;
+            
+            @include breakpoint-down(small) {
+                display: flex;
+            }
+
+            @include breakpoint-down(x-small) {
+                font-size: .75rem;
+            }
+        }
+    }
+}
